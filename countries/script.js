@@ -7,6 +7,7 @@ localStorage.getItem("username")
 
   document.getElementById("logout").addEventListener("click", ()=>{
     localStorage.removeItem("username")
+    window.location.href = "./"
   })
 
 let cardContainer = document.getElementById("grid-cards");

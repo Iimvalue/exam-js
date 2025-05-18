@@ -5,9 +5,10 @@ localStorage.getItem("username")
 
   document.getElementById("logout").addEventListener("click", ()=>{
     localStorage.removeItem("username")
+    window.location.href = "./"
   })
 
-  
+
 const API =
   "https://api.harvardartmuseums.org/object?apikey=8cf5f98c-55ec-4ed7-83ca-402c334a5697";
 
