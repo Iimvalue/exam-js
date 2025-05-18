@@ -4,7 +4,7 @@ let emailInput = document.getElementById("email");
 let submitBtn = document.getElementById("submit");
 let password = document.getElementById("password");
 
-submitBtn.addEventListener("click", async (e) => {
+submitBtn.addEventListener("click", (e) => {
   e.preventDefault();
   if (accountInput.value.length < 5) {
     alert("The account should be more than 4 character");
@@ -26,25 +26,24 @@ submitBtn.addEventListener("click", async (e) => {
     return;
   }
 
-  fetch(`${API}users?username=${accountInput.value}`).then((response) => {
-    
-      fetch(`${API}users`, {
-        method: "POST",
-        body: JSON.stringify({
-          username: accountInput.value,
-          email: emailInput.value,
-          password: password.value,
-        }),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      });
-      window.location.href = "../sign-in/";
-    // else {
-    // Swal.fire({
-    //     icon: "error",
-    //     title: "The account already exits",
-    //   });
-    // }
-  });
+  fetch(`${API}users`, {
+    method: "POST",
+    body: JSON.stringify({
+      username: accountInput.value,
+      email: emailInput.value,
+      password: password.value,
+    }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  })
+    .then((response) => response.json())
+    .then((json) => console.log(json));
+
+  // else {
+  // Swal.fire({
+  //     icon: "error",
+  //     title: "The account already exits",
+  //   });
+  // }
 });

@@ -7,18 +7,24 @@ let password = document.getElementById("password");
 submitBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
-  fetch(`${API}users?username=${accountInput.value}`)
+  fetch(`${API}users`)
     .then((response) => {
-      if (!response.ok)
-        return Swal.fire({
-          icon: "info",
-          title: "The account or password is incorrect",
-        });
+      // if (!response.ok)
+      //   return Swal.fire({
+      //     icon: "info",
+      //     title: "The account or password is incorrect",
+      //   });
 
       return response.json();
     })
     .then((data) => {
-      data.find((user) => {
+      let accountInput = document.getElementById("account");
+      let password = document.getElementById("password");
+
+
+      console.log(data);
+      
+      data.forEach((user) => {
         if (
           user.username == accountInput.value &&
           user.password == password.value
