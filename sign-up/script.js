@@ -4,7 +4,7 @@ let emailInput = document.getElementById("email");
 let submitBtn = document.getElementById("submit");
 let password = document.getElementById("password");
 
-submitBtn.addEventListener("click", (e) => {
+submitBtn.addEventListener("click", async (e) => {
   e.preventDefault();
   if (accountInput.value.length < 5) {
     alert("The account should be more than 4 character");
@@ -26,7 +26,8 @@ submitBtn.addEventListener("click", (e) => {
     return;
   }
 
-  fetch(`${API}users`, {
+  const response = await fetch(`${API}users`, {
+
     method: "POST",
     body: JSON.stringify({
       username: accountInput.value,
@@ -37,8 +38,9 @@ submitBtn.addEventListener("click", (e) => {
       "Content-type": "application/json; charset=UTF-8",
     },
   })
-    .then((response) => response.json())
-    .then((json) => console.log(json));
+  const data = await response.json()
+  window.location.href = "../sign-in"
+  
 
   // else {
   // Swal.fire({

@@ -1,6 +1,6 @@
-// localStorage.getItem("username")
-//   ? ""
-//   : (window.location.href = "../sign-in/");
+localStorage.getItem("username")
+  ? ""
+  : (window.location.href = "../sign-in/");
 
 
   document.getElementById("logout").addEventListener("click", ()=>{
